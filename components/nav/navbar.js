@@ -1,3 +1,4 @@
+import LeftNavbar from "./LeftNavbar"
 export default function Navbar() {
     return (
         <>
