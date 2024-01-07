@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { RandomBlob } from 'react-random-shapes';
 
 export default function CoffeeSelector({ setCoffeeSelected, coffeeSelected, coffeeArray }) {
   const centerOfArray = Math.floor((coffeeArray.length - 1) / 2);
