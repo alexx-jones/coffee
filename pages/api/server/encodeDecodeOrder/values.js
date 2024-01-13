@@ -1,8 +1,8 @@
 export const drinkEncoding = 
 {
     milkType: {
-      'none': '000',
       'skimmed': '001',
+      'none': '000',
       'whole': '010',
       'oat': '011',
       'almond': '100',
