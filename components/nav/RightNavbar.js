@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
 
-export default function RightNavbar() {
+export default function RightNavbar({mainColor}) {
     const router = useRouter();
     const [navbarItems, setNavbarItems] = useState([]);
     const currentPath = usePathname();
@@ -25,12 +25,12 @@ export default function RightNavbar() {
     }, []); // Pulling Navbar Items
 
     return (
-        <div className="w-full flex justify-end items-center gap-8 text-white mask mask-composite">
+        <div className="w-full flex justify-end items-center gap-14 text-zinc-800 mask mask-composite">
             {navbarItems.map((item) => (
-                <NavItem active={item.link === currentPath} text={item.text} link={item.link} key={item.id} router={router}/>
+                <NavItem active={item.link === currentPath} text={item.text} link={item.link} key={item.id} router={router} mainColor={mainColor}/>
             ))}
             <div className="bg-white rounded-full h-10 w-10 flex items-center justify-center cursor-pointer">
-                <FontAwesomeIcon icon={faUser} className="text-zinc-700" onClick={() => {router.push('/account')}}/>
+                <FontAwesomeIcon icon={faUser} onClick={() => {router.push('/account')}} className=" saturate-150 brightness-[140%]" style={{color: mainColor}}/>
             </div>
         </div>
     )

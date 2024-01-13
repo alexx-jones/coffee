@@ -9,6 +9,21 @@ import '@/styles/globals.css'
 function MyApp({ Component, pageProps }) {
   const [displayNav, setDisplayNav] = useState(false);
   const currentPath = usePathname();
+  const [mainColor, setMainColor] = useState("#7D82B8");
+  const [colors, setColors] = useState([
+    "#7D82B8",
+    "#FF0054",
+    "#FF5400",
+    "#048A81",
+    "#5FAD41",
+    "#2D936C",
+    "#DB3069",
+  ]);
+
+  useEffect(() => {
+    setMainColor(colors[Math.floor(Math.random()*colors.length)]);
+  }, [colors]);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,8 +47,8 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      {displayNav && <Navbar />}
-      <Component {...pageProps} />
+      {displayNav && <Navbar mainColor={mainColor} />}
+      <Component {...pageProps} mainColor={mainColor} />
     </>
   );
 }
