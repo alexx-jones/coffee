@@ -94,13 +94,13 @@ export const drinkEncoding =
         'not-bound5': '1111',
     },
     shots: {
-        'one': '00',
-        'two': '01',
-        'three': '10',
-        'four': '11',
+        'zero': '00',
+        'one': '01',
+        'two': '10',
+        'three': '11',
     },
     syrupShots: {
-        'none': '00',
+        'zero': '00',
         'one': '01',
         'two': '10',
         'three': '11'

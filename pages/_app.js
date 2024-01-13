@@ -15,15 +15,21 @@ function MyApp({ Component, pageProps }) {
     "#FF0054",
     "#FF5400",
     "#048A81",
-    "#5FAD41",
     "#2D936C",
     "#DB3069",
+    "#F39237",
+    "#0E79B2",
+    "#3F826D",
+    "#4B296B",
+    "#3B60E4",
+    "#E6AF2E",
+    "#8D3B72",
   ]);
-
   useEffect(() => {
     setMainColor(colors[Math.floor(Math.random()*colors.length)]);
   }, [colors]);
 
+  console.log(mainColor);
 
   useEffect(() => {
     const fetchData = async () => {

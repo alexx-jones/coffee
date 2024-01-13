@@ -15,6 +15,7 @@ export default function Home({mainColor}) {
   const [totalScale, setTotalScale] = useState("scale-[115%]");
   const [displayCoffeeCustomiser, setDisplayCoffeeCustomiser] = useState(false);
   const [showBasics, setShowBasics] = useState(true);
+  const [showBasicsTexts, setShowBasicsTexts] = useState(true);
   const coffeeArray = [
     {
       name: "Espresso",
@@ -23,6 +24,18 @@ export default function Home({mainColor}) {
     {
       name: "Cappuccino",
       imageUrl: "/assets/cappuccino.png",
+      milkType: "skimmed",
+      syrupFlavour: "none",
+      whippedCream: "false",
+      initialChocolatePowder: "none",
+      milkSteamFoam: "foamed",
+      hotCold: 'hot',
+      size: "medium",
+      decaf: "false",
+      tea: "none",
+      shots: "one",
+      syrupShots: "zero",
+      chocolatePowderTopping: "true",
     },
     {
       name: "Latte",
@@ -61,11 +74,13 @@ export default function Home({mainColor}) {
   const continueForward = () => {
     setInsideBlobScale("scale-0");
     setTotalScale("scale-[95%] duration-300");
-    setTimeout(() => {setTotalScale("scale-[800%] duration-[600ms]")}, 300);
+    setTimeout(() => {setTotalScale("scale-[1000%] duration-[600ms]")}, 300);
     setTimeout(() => {setShowBasics(false);}, 300);
     setTimeout(() => {
+      setShowBasicsTexts(false);
+      setTotalScale("scale-[0%] duration-[300ms]");
       setDisplayCoffeeCustomiser(true);
-    }, 600);
+    }, 1000);
   }
   return (
     <main className="flex flex-col items-center justify-between overflow-hidden min-h-screen" style={{ marginTop: '-6rem', paddingTop: '6rem' }}>
@@ -92,26 +107,26 @@ export default function Home({mainColor}) {
           <></>
         )}
       </div>
-      {displayCoffeeCustomiser === true && <CoffeeCustomiser coffeeSelected={coffeeSelected} coffeeArray={coffeeArray} />}
-      <div className='grid grid-cols-12 row-span-1 p-4'>
+      {displayCoffeeCustomiser === true && <CoffeeCustomiser coffeeSelected={coffeeSelected} coffeeArray={coffeeArray} mainColor={mainColor} />}
+      {showBasicsTexts === true && (<div className='grid grid-cols-12 row-span-1 p-4'>
         <div className='col-span-4'>
         </div>
         <div className='col-span-8 flex flex-col items-center gap-12 pt-12'>
-          <div className='w-full text-center'>
+          <div className={`w-full text-center ${showBasicsTexts === false && 'hidden'}`}>
             <span className='font-extrabold text-5xl text-zinc-800'>Order a drink</span>
           </div>
           <CoffeeSelector changeCoffeeSelected={changeCoffeeSelected} coffeeSelected={coffeeSelected} coffeeArray={coffeeArray} color={mainColor} fullSize={showBasics} /> 
           <div className='pt-8 w-full flex justify-end px-12'>
-            <button style={{ backgroundColor: mainColor }} 
+            {showBasicsTexts === true && (<button style={{ backgroundColor: mainColor }} 
             className={`w-[20rem] py-6 rounded-xl flex gap-8 items-center justify-center text-white text-lg font-bold drop-shadow-2xl`
           }
             onClick={continueForward}
             >
               <span>Customize</span> <FontAwesomeIcon icon={faChevronRight} className={`transition-all duration-1000`} /> 
-            </button>
+            </button>) }
           </div>
         </div>
-      </div>
+      </div>)}
     </div>
   </main>
   
