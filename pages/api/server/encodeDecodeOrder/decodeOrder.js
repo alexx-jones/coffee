@@ -10,7 +10,6 @@ export default async function decodeOrder(req, res) {
         }
         else {
             try {
-                console.log('Step 0: Base64 string\n', base64String);
                 const buffer = Buffer.from(base64String, 'base64');
                 const binaryString = buffer.toString('binary');
                 const decimalValue = BigInt(binaryString);
