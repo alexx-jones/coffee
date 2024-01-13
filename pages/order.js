@@ -1,4 +1,5 @@
-import CoffeeSelector from '@/components/coffee/CoffeeSelector'
+import CoffeeSelector from '@/components/coffee/CoffeeSelector';
+import CoffeeCustomiser from '@/components/coffee/CoffeeCustomizer';
 import { useEffect, useState } from "react";
 import Image from 'next/image';
 import React from 'react';
@@ -12,6 +13,7 @@ export default function Home({mainColor}) {
   const [translateXMag, setTranslateXMag] = useState(0);
   const [insideBlobScale, setInsideBlobScale] = useState("scale-[85%]");
   const [totalScale, setTotalScale] = useState("scale-[115%]");
+  const [displayCoffeeCustomiser, setDisplayCoffeeCustomiser] = useState(false);
   const [showBasics, setShowBasics] = useState(true);
   const coffeeArray = [
     {
@@ -60,7 +62,10 @@ export default function Home({mainColor}) {
     setInsideBlobScale("scale-0");
     setTotalScale("scale-[95%] duration-300");
     setTimeout(() => {setTotalScale("scale-[800%] duration-[600ms]")}, 300);
-    setTimeout(() => {setShowBasics(false);}, 200);
+    setTimeout(() => {setShowBasics(false);}, 300);
+    setTimeout(() => {
+      setDisplayCoffeeCustomiser(true);
+    }, 600);
   }
   return (
     <main className="flex flex-col items-center justify-between overflow-hidden min-h-screen" style={{ marginTop: '-6rem', paddingTop: '6rem' }}>
@@ -87,6 +92,7 @@ export default function Home({mainColor}) {
           <></>
         )}
       </div>
+      {displayCoffeeCustomiser === true && <CoffeeCustomiser coffeeSelected={coffeeSelected} coffeeArray={coffeeArray} />}
       <div className='grid grid-cols-12 row-span-1 p-4'>
         <div className='col-span-4'>
         </div>
@@ -101,7 +107,7 @@ export default function Home({mainColor}) {
           }
             onClick={continueForward}
             >
-              <span>Customise</span> <FontAwesomeIcon icon={faChevronRight} className={`transition-all duration-1000`} /> 
+              <span>Customize</span> <FontAwesomeIcon icon={faChevronRight} className={`transition-all duration-1000`} /> 
             </button>
           </div>
         </div>
