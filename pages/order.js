@@ -6,7 +6,7 @@ import { RandomBlob } from 'react-random-shapes';
 import BlobShape from '@/components/coffee/Blob';
 
 export default function Home({mainColor}) {
-  const [coffeeSelected, setCoffeeSelected] = useState();
+  const [coffeeSelected, setCoffeeSelected] = useState(0);
   const [blobRotationDeg, setBlobRotationDeg] = useState(20);
   const [translateXMag, setTranslateXMag] = useState(0);
   const coffeeArray = [
@@ -29,6 +29,14 @@ export default function Home({mainColor}) {
     {
       name: "Flat White",
       imageUrl: "/assets/flat_white.png",
+    },
+    {
+      name: "Macchiato",
+      imageUrl: "/assets/macchiato.png",
+    },
+    {
+      name: "Cortado",
+      imageUrl: "/assets/cortado.png",
     },
   ];
 

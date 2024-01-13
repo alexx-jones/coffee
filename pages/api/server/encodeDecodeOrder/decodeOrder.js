@@ -18,9 +18,6 @@ export default async function decodeOrder(req, res) {
                 return res.status(200).json({message: 'Successfully decoded.', binaryString: reversedBinaryString});
             }
             catch (err) {
-                console.log(err);
-                console.log('  ');
-                console.error(err);
                 return res.status(500).json({message: 'Uh oh.'});
             }
         }

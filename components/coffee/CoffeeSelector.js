@@ -3,16 +3,10 @@ import { useEffect, useState } from "react";
 import { RandomBlob } from 'react-random-shapes';
 
 export default function CoffeeSelector({ changeCoffeeSelected, coffeeSelected, coffeeArray, color }) {
-  const centerOfArray = Math.floor(coffeeArray.length / 2);
-  const initialSelectedCoffee = centerOfArray + 1; // Center
-  const initialOffset = centerOfArray * 22;
 
-  const [offset, setOffset] = useState(initialOffset);
-
-  useEffect(() => {
-    // Set initially selected coffee to center
-    changeCoffeeSelected(initialSelectedCoffee);
-  }, []); // Empty dependency array ensures this effect runs only once on mount
+  // Random rotation on select
+  const randomRotation = Math.floor(Math.random() * 30) - 15; 
+  const finalRotation = (randomRotation >= -5 && randomRotation <= 5) ? randomRotation + 10 : randomRotation;
 
   return (
     <div className="grid w-full h-full grid-cols-8 gap-8">
@@ -33,11 +27,12 @@ export default function CoffeeSelector({ changeCoffeeSelected, coffeeSelected, c
               width={1000}
               height={1000}
               alt={coffee.name}
-              className="drop-shadow-lg"
+              className={`drop-shadow-lg transition-all duration-75`}
+              style={{ transform: coffeeSelected === index ? `rotate(${finalRotation}deg)` : null }}
               draggable={false}
             />
           </div>
-          <span className="text-center text-xl font-bold">{coffee.name}</span>
+          <span className={`text-center text-xl font-bold text-zinc-900 transition-all duration-200`}>{coffee.name}</span>
         </div>
       ))}
     </div>
