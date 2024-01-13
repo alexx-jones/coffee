@@ -2,7 +2,6 @@ import CoffeeSelector from '@/components/coffee/CoffeeSelector'
 import { useEffect, useState } from "react";
 import Image from 'next/image';
 import React from 'react';
-import { RandomBlob } from 'react-random-shapes';
 import BlobShape from '@/components/coffee/Blob';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
@@ -59,13 +58,14 @@ export default function Home({mainColor}) {
 
   const continueForward = () => {
     setInsideBlobScale("scale-0");
-    setTotalScale("scale-[1000%]");
+    setTotalScale("scale-[95%] duration-300");
+    setTimeout(() => {setTotalScale("scale-[800%] duration-[600ms]")}, 300);
     setTimeout(() => {setShowBasics(false);}, 200);
   }
   return (
     <main className="flex flex-col items-center justify-between overflow-hidden min-h-screen" style={{ marginTop: '-6rem', paddingTop: '6rem' }}>
     <div className="w-full flex flex-col gap-12 relative">
-      <div className={`-translate-x-1/2 absolute left-0 top-0 bottom-0 w-1/3 content-[] shadow-xl-inner ${totalScale} z-[30] transition-all duration-1000`}>
+      <div className={`-translate-x-1/2 absolute left-0 top-0 bottom-0 w-1/3 content-[] shadow-xl-inner ${totalScale} z-[30] transition-all `}>
         <div
           className={`h-full relative z-0 transition-all duration-200`}
           style={{ transform: `rotate(${blobRotationDeg}deg) translateX(${translateXMag}rem)` }}
@@ -97,10 +97,11 @@ export default function Home({mainColor}) {
           <CoffeeSelector changeCoffeeSelected={changeCoffeeSelected} coffeeSelected={coffeeSelected} coffeeArray={coffeeArray} color={mainColor} fullSize={showBasics} /> 
           <div className='pt-8 w-full flex justify-end px-12'>
             <button style={{ backgroundColor: mainColor }} 
-            className='w-[20rem] py-6 rounded-xl flex gap-8 items-center justify-center text-white text-lg font-bold drop-shadow-2xl'
+            className={`w-[20rem] py-6 rounded-xl flex gap-8 items-center justify-center text-white text-lg font-bold drop-shadow-2xl`
+          }
             onClick={continueForward}
             >
-            Customise <FontAwesomeIcon icon={faChevronRight} /> 
+              <span>Customise</span> <FontAwesomeIcon icon={faChevronRight} className={`transition-all duration-1000`} /> 
             </button>
           </div>
         </div>
