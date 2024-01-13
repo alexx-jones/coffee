@@ -9,7 +9,7 @@ import '@/styles/globals.css'
 function MyApp({ Component, pageProps }) {
   const [displayNav, setDisplayNav] = useState(false);
   const currentPath = usePathname();
-  const [mainColor, setMainColor] = useState("#7D82B8");
+  const [mainColor, setMainColor] = useState();
   const [colors, setColors] = useState([
     "#7D82B8",
     "#FF0054",
@@ -48,7 +48,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       {displayNav && <Navbar mainColor={mainColor} />}
-      <Component {...pageProps} mainColor={mainColor} />
+      {mainColor && (<Component {...pageProps} mainColor={mainColor} />)}
     </>
   );
 }

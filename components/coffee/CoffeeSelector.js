@@ -1,15 +1,13 @@
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { RandomBlob } from 'react-random-shapes';
 
-export default function CoffeeSelector({ changeCoffeeSelected, coffeeSelected, coffeeArray, color }) {
+export default function CoffeeSelector({ changeCoffeeSelected, coffeeSelected, coffeeArray, color, fullSize }) {
 
   // Random rotation on select
   const randomRotation = Math.floor(Math.random() * 30) - 15; 
   const finalRotation = (randomRotation >= -5 && randomRotation <= 5) ? randomRotation + 10 : randomRotation;
 
   return (
-    <div className="grid w-full h-full grid-cols-8 gap-8">
+    <div className={`grid w-full h-full grid-cols-8 gap-8 transition-all duration-200 ${fullSize ? 'scale-100' : 'scale-0'}`}>
       {coffeeArray.map((coffee, index) => (
         <div
           key={index}
