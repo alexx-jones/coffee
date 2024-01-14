@@ -7,7 +7,7 @@ import BlobShape from '@/components/coffee/Blob';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
-export default function Home({mainColor}) {
+export default function Order({mainColor}) {
   const [coffeeSelected, setCoffeeSelected] = useState(0);
   const [blobRotationDeg, setBlobRotationDeg] = useState(20);
   const [translateXMag, setTranslateXMag] = useState(0);
