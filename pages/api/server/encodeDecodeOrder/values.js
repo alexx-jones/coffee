@@ -44,8 +44,8 @@ export const drinkEncoding =
       'not-bound16': '11111'
     },
     whippedCream: {
-        'false': '0',
-        'true': '1'
+        'no': '0',
+        'yes': '1'
     },
     initialChocolatePowder: {
         'none': '00',
@@ -72,8 +72,8 @@ export const drinkEncoding =
         'large': '11',
     },
     decaf: {
-        'false': '0',
-        'true': '1',
+        'no': '0',
+        'yes': '1',
     },
     tea: {
         'none': '0000',
@@ -106,7 +106,7 @@ export const drinkEncoding =
         'three': '11'
     },
     chocolatePowderTopping: {
-        'false': '0',
-        'true': '1',
+        'no': '0',
+        'yes': '1',
     },
 }

@@ -9,11 +9,6 @@
         "id": 2,
         "text": "Order",
         "link": "/order"
-      },
-      {
-        "id": 3,
-        "text": "Ta-Da",
-        "link": "/ta-da"
       }
     ],
     "nonNavbar": [
