@@ -39,24 +39,46 @@ export default function CoffeeCustomiser({ coffeeSelected, coffeeArray, mainColo
     const [stage, setStage] = useState("Milk type.");
 
     useEffect(() => {
-        setMilkTypes(Object.keys(drinkEncoding.milkType));
+        // Sets states. Filters out not-bounds
+        setMilkTypes(Object.keys(drinkEncoding.milkType).filter(key => !key.includes("not-bound")));
+        
+
+        // Syrup Flavours
         let syrupFlavours = Object.keys(drinkEncoding.syrupFlavour)
         .filter(key => !key.includes("not-bound"));
         setSyrupFlavours(syrupFlavours);
+        
+
+        // Sizes
         let sizes = Object.keys(drinkEncoding.size)
         .filter(key => !key.includes("not-bound"));
         setSizesAvailable(sizes);
+        
+
+        // Decaf Options
         let decafOptions = Object.keys(drinkEncoding.decaf)
         .filter(key => !key.includes("not-bound"));
         setDecafOptions(decafOptions);
+        
+
+        // Espresso Shots
         let espressoShots = Object.keys(drinkEncoding.shots)
         .filter(key=> !key.includes("not-bound") && !key.includes("zero"));
         setAvailableShotOptions(espressoShots);
+        
+
+        // Cocoa Topping
         let cocoaTopping = Object.keys(drinkEncoding.chocolatePowderTopping)
         setAvailableCocoaToppings(cocoaTopping);
+        
+
+        // Temperature Options
         let temperatureOptions = Object.keys(drinkEncoding.hotCold)
         .filter(key => !key.includes("not-bound"));
         setAvailableTemperatures(temperatureOptions);
+        
+
+        // Whipped Cream Options
         let whippedCreamOptions = Object.keys(drinkEncoding.whippedCream)
         .filter(key => !key.includes("not-bound"));
         setAvailableWhippedCream(whippedCreamOptions);
