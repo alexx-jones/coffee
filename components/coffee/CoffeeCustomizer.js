@@ -20,7 +20,6 @@ const CoffeeCustomiser = ({ coffeeSelected, coffeeArray, mainColor }) => {
     const [currentOptions, setCurrentOptions] = useState({});
 
     useEffect(() => {
-<<<<<<< HEAD
         const initialOptions = {
             milkType: coffee.milkType,
             syrupFlavour: coffee.syrupFlavour,
@@ -33,64 +32,7 @@ const CoffeeCustomiser = ({ coffeeSelected, coffeeArray, mainColor }) => {
             whippedCream: coffee.whippedCream,
         };
         setCurrentOptions(initialOptions);
-=======
-        // Sets states. Filters out not-bounds
-        setMilkTypes(Object.keys(drinkEncoding.milkType).filter(key => !key.includes("not-bound")));
-        
-
-        // Syrup Flavours
-        let syrupFlavours = Object.keys(drinkEncoding.syrupFlavour)
-        .filter(key => !key.includes("not-bound"));
-        setSyrupFlavours(syrupFlavours);
-        
-
-        // Sizes
-        let sizes = Object.keys(drinkEncoding.size)
-        .filter(key => !key.includes("not-bound"));
-        setSizesAvailable(sizes);
-        
-
-        // Decaf Options
-        let decafOptions = Object.keys(drinkEncoding.decaf)
-        .filter(key => !key.includes("not-bound"));
-        setDecafOptions(decafOptions);
-        
-
-        // Espresso Shots
-        let espressoShots = Object.keys(drinkEncoding.shots)
-        .filter(key=> !key.includes("not-bound") && !key.includes("zero"));
-        setAvailableShotOptions(espressoShots);
-        
-
-        // Cocoa Topping
-        let cocoaTopping = Object.keys(drinkEncoding.chocolatePowderTopping)
-        setAvailableCocoaToppings(cocoaTopping);
-        
-
-        // Temperature Options
-        let temperatureOptions = Object.keys(drinkEncoding.hotCold)
-        .filter(key => !key.includes("not-bound"));
-        setAvailableTemperatures(temperatureOptions);
-        
-
-        // Whipped Cream Options
-        let whippedCreamOptions = Object.keys(drinkEncoding.whippedCream)
-        .filter(key => !key.includes("not-bound"));
-        setAvailableWhippedCream(whippedCreamOptions);
-    }, []);
-
-    useEffect(() => {
-        setCurrentMilkType(coffee.milkType);
-        setCurrentSyrupFlavour(coffee.syrupFlavour);
-        setCurrentSyrupShotCount(wordToInteger(coffee.syrupShots));
-        setCurrentSize(coffee.size);
-        setCurrentDecaf(coffee.decaf);
-        setCurrentEspressoShot(coffee.shots);
-        setCurrentCocoaOption(coffee.chocolatePowderTopping);
-        setCurrentTemperature(coffee.hotCold);
-        setCurrentWhippedCream(coffee.whippedCream)
->>>>>>> 78d525e86e755645fac563f787cc9b8308a20cb4
-    }, [coffee]);
+    }, []); // Run only once after the initial render
 
     const handleOptionChange = (option, value) => {
         setCurrentOptions({ ...currentOptions, [option]: value });
